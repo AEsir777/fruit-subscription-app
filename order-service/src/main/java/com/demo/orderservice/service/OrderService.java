@@ -36,7 +36,7 @@ public class OrderService {
                 .toList();
         order.setOrderLineItemList(orderLineItem);
 
-        // place the order
+        // call inventory service and place order is product  is in stack
         orderRepository.save(order);
     }
 }
