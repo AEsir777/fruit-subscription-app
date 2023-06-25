@@ -67,8 +67,13 @@
         	</dependency>
     	</dependencies>
 	</dependencyManagement>
-
+ 
 	<build>
+		<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+		<scriptSourceDirectory>${basedir}/src/main/scripts</scriptSourceDirectory>
+		<testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
+		<outputDirectory>${basedir}/target/classes</outputDirectory>
+		<testOutputDirectory>${basedir}/target/test-classes</testOutputDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
