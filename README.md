@@ -1,13 +1,33 @@
-# commerce-microservice-app
+# fruit-subscription-app
 
-- POST ```localhost:8081/api/order```  
-![image](https://github.com/AEsir777/commerce-microservice-app/assets/77596290/24aa9694-3f53-409b-a1ab-30c578670d6f)
-By submitting post request for the order items, the items are added into database.  
-![image](https://github.com/AEsir777/commerce-microservice-app/assets/77596290/a2901b00-84f6-44a6-b542-e84b572decf1)
+## Functionality
+- order fruit from inventory
+- subscribe when fruit is in stock
 
-  
+## Overview
+Inventory Serive inter communicated with order service using webflux to check if there are enough products in the stock.
+
+## Inventory Service - 8082
 - GET ```localhost:8082/api/inventory/{skuCode}```  
-![image](https://github.com/AEsir777/commerce-microservice-app/assets/77596290/fbfaef8c-a4ce-495e-b98d-4b45a04a5971)  
+![Screenshot 2023-06-25 131801](https://github.com/AEsir777/fruit-subscription-app/assets/77596290/586b9cc5-a438-4be4-9d27-b0e900c17c62)  
 Check if the inventory exists in the database or not  
-![image](https://github.com/AEsir777/commerce-microservice-app/assets/77596290/0c270a6f-5d02-47a6-9c27-7fd8bab457a0)
-![image](https://github.com/AEsir777/commerce-microservice-app/assets/77596290/cb0986f3-e925-40ce-9b5e-3b7c964e9c3d)
+![Screenshot 2023-06-25 131818](https://github.com/AEsir777/fruit-subscription-app/assets/77596290/bb0bff16-3060-4413-b566-2fe1218b9847)
+![Screenshot 2023-06-25 131829](https://github.com/AEsir777/fruit-subscription-app/assets/77596290/074bf95f-9683-43a2-a23d-c8fcfdf8c1c2)
+ 
+## Order Service - 8081
+- POST ```localhost:8081/api/order```
+The database of inventoryservice contains orange and blueberry
+![image](https://github.com/AEsir777/fruit-subscription-app/assets/77596290/2e7072d7-004b-4acb-a102-d3b4dacf5b2f)
+By submitting post request for the order items, a synchronous communication to ```localhost:8082/api/inventory/{skuCode}```  
+![image](https://github.com/AEsir777/fruit-subscription-app/assets/77596290/27321d7f-7d9d-4f09-9e43-ec309ebe1e51)
+
+
+If item not exist in the database, throws exception.
+![image](https://github.com/AEsir777/fruit-subscription-app/assets/77596290/dbd20a18-f304-4ae4-a26c-329f426c878e)
+
+## TODO
+- [ ] add dicovery server
+- [ ] add more Junit Test 
+- [ ] add notification server for subscription
+
+
