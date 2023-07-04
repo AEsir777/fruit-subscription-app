@@ -13,7 +13,7 @@ import com.demo.orderservice.dto.OrderRequest;
 import com.demo.orderservice.model.Order;
 import com.demo.orderservice.model.OrderLineItem;
 import com.demo.orderservice.repository.OrderRepository;
-import com.demo.inventoryservice.dto.InventoryResponse;
+import com.demo.orderservice.dto.InventoryResponse;
 
 import lombok.RequiredArgsConstructor;
 
@@ -51,6 +51,7 @@ public class OrderService {
                 .retrieve()
                 .bodyToMono(InventoryResponse[].class)
                 .block();
+        System.out.println(inventoryResponseArray.length);
         boolean result = Arrays.stream(inventoryResponseArray)
                     .allMatch(InventoryResponse::isInStock);
 

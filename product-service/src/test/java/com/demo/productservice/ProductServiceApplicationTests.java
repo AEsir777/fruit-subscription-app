@@ -26,7 +26,6 @@ import com.demo.productservice.repository.ProductRepository;
 @Testcontainers
 @AutoConfigureMockMvc
 class ProductServiceApplicationTests {
-
 	@Container
 	static MongoDBContainer mongoDBContainer = new MongoDBContainer(("mongo:4.4"));
 	@Autowired
@@ -59,5 +58,4 @@ class ProductServiceApplicationTests {
 				.andExpect(status().isCreated());
 		Assertions.assertEquals(1, productRepository.findAll().size());
 	}
-
 }
